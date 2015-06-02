@@ -1,0 +1,112 @@
+<html>
+	<head>
+		<style>
+			img {
+				display: block;
+				margin: 3em auto;
+				width: 85%;
+			}
+				img.bordered {
+					border: 1px solid #999;
+				}
+			p {
+				margin: 4em 3em;
+				text-align: center;
+				font-family: Ubuntu;
+				font-size: 40px;
+			}
+			table {
+				width: 70%;
+				margin: 2em auto;
+			}
+				table td, table th {
+					font-family: Ubuntu;
+					font-size: 30px;
+				}
+				table th {
+					padding-top: 1em;
+				}
+			pre {
+				margin: 1em 3em;
+				font-size: 30px;
+			}
+		</style>
+	</style>
+	<body>
+		<p>I am @JoshData. By day (and night) I am a civic entrepreneur/hacker.</p>
+		<p>I run <u>GovTrack.us</u> and recently co-founded <u>if.then.fund</u>.</p>
+		<p>Today I am going to tell you about my side-project:</p>
+		<p>https://mailinabox.email</p>
+		<hr>
+		<img src="how-mail-works.png">
+		<hr>
+		<p>Decentralized. Secure.</p>
+		<hr>
+		<img src="architecture.png">
+		<hr>
+		<img src="ubuntu.jpg" class="bordered">
+		<hr>
+		<img src="roundcube.png" class="bordered">
+		<hr>
+		<img src="control_panel.png" class="bordered">
+		<hr>
+		<img src="ssllabs.png">
+		<hr>
+		<p>https://github.com/mail-in-a-box/mailinabox</p>
+		<p>Readable. Idempotent. Fool-proof.</p>
+		<hr>
+		<p>~20 installs per day</p>
+		<p>No idea how many Mail-in-a-Boxes are actually running.</p>
+		<p>Small but great open source community.</p>
+		<p>Ultimate goal: Let people tinker with email again.</p>
+		<hr>
+		<p>The control panel is a client to<br>the Management API<br>(via AJAX --- no <code>&lt;form></code>s).</p>
+		<table>
+		<tr><th>Create Mailboxes</th></tr>
+		<tr><td>GET /admin/mail/users</td><td>(list users)</td></tr>
+		<tr><td>POST /admin/mail/users/add</td><td>(add user)</td></tr>
+		<tr><td>POST /admin/mail/users/password</td><td>(set user pw)</td></tr>
+
+		<tr><th>Modify DNS</th></tr>
+		<tr><td>PUT /admin/dns/custom/&lt;qname>/&lt;rtype></td><td>(set DNS record)</td></tr>
+
+		<tr><th>Other Management</th></tr>
+		<tr><td>POST /admin/ssl/install</td><td>(install SSL cert)</td></tr>
+		<tr><td>POST /admin/system/status</td><td>(self monitoring - JSON)</td></tr>
+		</table>
+		<hr>
+
+		<p>curl -X POST --user me@joshmail.xyz:123456 https://box.joshmail.xyz/admin/system/status</p>
+		<pre>[
+  {
+    "extra": [],
+    "text": "System",
+    "type": "heading"
+  },
+  {
+    "extra": [],
+    "text": "All system services are running.",
+    "type": "ok"
+  },
+  {
+    "extra": [],
+    "text": "SSH disallows password-based login.",
+    "type": "ok"
+  },
+  {
+    "extra": [],
+    "text": "System updates have been installed
+      and a reboot of the machine is required.",
+    "type": "error"
+  },
+  ...</pre>
+		<hr>
+		<p>To create a dynamic DNS service:</p>
+		<p>curl -X PUT --user me@joshmail.xyz:123456 https://box.joshmail.xyz/admin/dns/custom/laptop.joshmail.xyz</p>
+		<hr>
+		<img src="api-auth-methods.png">
+		<hr>
+		<p>Stay in touch.</p>
+		<p>@JoshData. @Mailinabox. https://mailinabox.email.</p>
+	</body>
+</html>
